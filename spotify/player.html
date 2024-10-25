@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeBeats</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.6.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="player.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <nav class="nav-bar">
+        <header>
+            <div class="perfil">
+                <i class="ri-user-fill"></i>
+            </div>
+            <div class="image-text">
+                <a href="./index.html">
+                    <img src="barrão/logo.jpg" alt="inicio">
+                </a>
+            </div>
+            <div class="settings-icon">
+                <br><br><br><br><br><br><br><br><br><br><br><br>
+                <i class="ri-settings-5-fill"></i>
+            </div>
+        </header>
+    </nav>
+
+    <main class="player-area">
+        <div class="album-info">
+            <img src="./barrão/skyfall.jpg" alt="Frank Sinatra">
+            <h2>Skyfall</h2>
+            <p>Adele</p>
+            <div class="controls">
+                <button id="prev"><i class="ri-skip-back-fill"></i></button>
+                <button id="play-pause"><i class="ri-play-fill"></i></button>
+                <button id="next"><i class="ri-skip-forward-fill"></i></button>
+                <button id="like-btn"><i class="ri-heart-line"></i></button>
+            </div>
+            <div class="progress-container" id="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+        </div>
+        
+        <aside class="playlist">
+            <h3><img src="barrão/play2.png" width="60px" style="vertical-align: middle; margin-right: 10px; border-radius: 10px;">Playlist</h3>
+            <ul id="playlist">
+                <li data-src="./barrão/from.mp3" data-img="./barrão/lau.png"><img src="./barrão/lau.png" width="75px">From the Start - Laufey</li>
+                <li data-src="./barrão/die_another_day.mp3" data-img="./barrão/Another_Way_2_Die_007_QoS.jpg"><img src="./barrão/Another_Way_2_Die_007_QoS.jpg" width="75px">Die Another Day - Jack White</li>
+                <li data-src="./barrão/james.mp3" data-img="./barrão/skyfall.jpg"><img src="./barrão/skyfall.jpg" width="75px">Skyfall - Adele</li>
+                <li data-src="./barrão/mr_lonely.mp3" data-img="./barrão/mr.png"><img src="./barrão/mr.png" width="75px">Mr Lonely - Bobby Vinton</li>
+                <li data-src="./barrão/monaco.mp3" data-img="./barrão/monaco.jpg"><img src="./barrão/monaco.jpg" width="75px">Bad Bunny - Monaco</li>
+            </ul>
+        </aside>
+    </main>
+
+    <audio id="audio" controls style="display:none;">
+        <source src="James Bond - Skyfall.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+</body>
+</html>

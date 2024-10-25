@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Músicas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="profile">
+            <a href="perfil.html"><i class="ri-user-fill"></i></a>
+        </div>
+        <div class="logo">
+            <a href="test.html"><img src="imgs/logo.png" alt="Logo"></a>
+        </div>
+        <div class="settings">
+            <i class="ri-settings-5-fill"></i>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Cadastro de Músicas</h1>
+        <form id="musicForm">
+            <input type="text" id="title" placeholder="Título" required>
+            <input type="text" id="artist" placeholder="Artista" required>
+            <input type="text" id="genre" placeholder="Gênero" required>
+            <input type="number" id="duration" placeholder="Duração (min)" required min="0">
+            <input type="file" id="audio" accept="audio/*" required>
+            <button type="submit">Cadastrar Música</button>
+        </form>
+
+        <input type="text" id="search" placeholder="Buscar músicas..." oninput="filtrarMusicas()">
+        
+        <h2>Músicas Cadastradas</h2>
+        <ul id="musicList"></ul>
+        <div id="message" class="message"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

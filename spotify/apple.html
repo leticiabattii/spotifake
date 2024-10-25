@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Conta Apple</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        .login-container img {
+            width: 80px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: normal;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box; /* Garantir que padding e borda sejam incluídos no tamanho total do input */
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-group .country-code {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            color: #555;
+        }
+
+        .input-group input {
+            padding-left: 50px; /* Espaço para o código do país */
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .info-text {
+            font-size: 12px;
+            color: #777;
+            margin-top: 20px;
+        }
+
+        .info-text img {
+            width: 20px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <img src="imgs/logo.png" alt="Rhythmify Logo">
+        <h1>Use sua Conta Apple para iniciar sessão em Rhythmify.</h1>
+        
+        <div class="input-group">
+            <span class="country-code">+55</span>
+            <input type="text" placeholder="E-mail ou número de telefone">
+        </div>
+
+        <input type="password" placeholder="Senha">
+
+        <button><a href="test.html">Iniciar Sessão</a></button>
+
+        <p class="info-text">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Information_icon.svg" alt="Info">
+            Ao configurar o recurso Iniciar sessão com a Apple, as informações sobre suas interações com a Apple e este dispositivo poderão ser usadas pela Apple para ajudar a prevenir fraude. Veja como seus dados são gerenciados.
+        </p>
+    </div>
+
+</body>
+</html>

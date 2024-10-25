@@ -1,0 +1,145 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: none;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #6A0FAD; 
+    padding: 10px;
+    color: white;
+}
+
+.header .logo {
+    flex: 1;
+    text-align: center;
+}
+
+.header img {
+    width: 75px; /* Aumentado o tamanho da logo */
+    height: 75px;
+    border-radius: 50%;
+}
+
+.header .profile,
+.header .settings {
+    width: 75px;  /* Aumentado o tamanho do contêiner de perfil e configurações */
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .profile i,
+.header .settings i {
+    font-size: 24px; /* Aumentado o tamanho do ícone de perfil e configurações */
+}
+
+h1, h2 {
+    color: #fff;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input {
+    margin: 5px;
+    padding: 8px;
+    width: calc(25% - 16px);
+    background-color: #222;
+    color: white;
+    border: 1px solid #333;
+}
+
+button {
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+#search {
+    width: calc(100% - 16px);
+    padding: 8px;
+    margin-bottom: 20px;
+    background-color: #222;
+    color: white;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #333;
+    background-color: #333;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.audio-player {
+    margin-top: 5px;
+}
+
+.delete-button, .edit-button {
+    margin-left: 10px;
+    padding: 5px 8px;
+    cursor: pointer;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+.edit-button {
+    background-color: #007bff;
+    color: white;
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+}
+
+.message {
+    margin: 10px 0;
+    padding: 10px;
+    color: white;
+    display: none;
+}
+
+.success {
+    background-color: #28a745;
+}
+
+.error {
+    background-color: #dc3545;
+}

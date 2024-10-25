@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="registrar.js">
+    <title>Rhythmify</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: white;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #333;
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #8e44ad;
+        }
+
+        header .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #c8a5e3;
+            padding: 8px 12px;
+            border-radius: 20px;
+            color: black;
+            width: 400px;
+        }
+
+        header .search-bar input {
+            background-color: transparent;
+            border: none;
+            margin-left: 10px;
+            outline: none;
+            color: black;
+            width: 150px;
+        }
+
+        header .user {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .content {
+            display: flex;
+            flex: 1;
+        }
+
+        .sidebar {
+            width: 20%;
+            background-color: #1f1f1f;
+            padding: 20px;
+            height: 120vh;
+            overflow-y: auto;
+        }
+
+        .sidebar .library-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .sidebar .library-header h2 {
+            color: white;
+            font-size: 18px;
+        }
+
+        .library-header .add-button,
+        .library-header .arrow-button {
+            background-color: #8e44ad;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .tabs {
+            background-color: #8e44ad;
+            border: none;
+            border-radius: 20px;
+            padding: 10px;
+            color: white;
+            cursor: pointer;
+            flex-grow: 1;
+            margin-right: 10px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .tabs button {
+            background-color: #8e44ad;
+            border: none;
+            border-radius: 20px;
+            padding: 10px;
+            color: white;
+            cursor: pointer;
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+
+        .tabs button:last-child {
+            margin-right: 0;
+        }
+
+        .tabs button:hover {
+            background-color: #a569bd;
+        }
+
+        .library ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .library ul li {
+            display: flex;
+            align-items: center;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .library ul li img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+
+        .library ul li span {
+            font-size: 16px;
+        }
+
+        .library ul li:hover {
+            background-color: #8e44ad;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            background-color: #1f1f1f;
+            height: 700px;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            background-color: #2a2a2a;
+            height: 700px;
+        }
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .profile-section {
+            text-align: center;
+        }
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .profile-avatar {
+            position: relative;
+            cursor: pointer;
+        }
+        .avatar-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 3px solid #c8a5e3;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .profile-avatar:hover .avatar-image {
+            transform: scale(1.1);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .modal-content {
+            background-color: rgb(0, 0, 0);
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #c8a5e3;
+            color: black;;
+            width: 300px;
+            border-radius: 10px;
+            text-align: left;
+        }
+        .margin-item{
+            margin-left: -18px;
+        }
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-btn:hover,
+        .close-btn:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .modal-item {
+            margin-bottom: 15px;
+        }
+        .save-btn {
+            background-color: #28a745;
+            color: rgb(0, 0, 0);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .save-btn:hover {
+            background-color: #218838;
+        }
+        input[type="string"],
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #c8a5e3;
+            color: black;;
+            border-radius: 5px;
+            margin-left: -9px;
+        }
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #333;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .playingmusic {
+            display: flex;
+            align-items: center;
+            /* Centraliza verticalmente */
+            justify-content: flex-start;
+            /* Alinha à esquerda */
+            width: 20%;
+            /* Ajusta a largura da div */
+        }
+
+        .playingmusic img {
+            margin-right: 10px;
+            /* Espaçamento entre a imagem e o texto */
+        }
+
+        .progress-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50%;
+            /* Ajuste de acordo com o design */
+            padding: 0 20px;
+            /* Espaçamento entre os elementos */
+        }
+
+        .duration-bar {
+            -webkit-appearance: none;
+            /* Remove o estilo padrão no Chrome/Safari */
+            appearance: none;
+            width: 100%;
+            height: 5px;
+            background: #8e44ad;
+            outline: none;
+            border-radius: 5px;
+            transition:  0.3s;
+        }
+
+        .duration-bar::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            background: #c8a5e3;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .duration-bar::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            background: #c8a5e3;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .player-controls {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 20%;
+        }
+
+        .player-controls button {
+            padding: 10px;
+            gap: 10px;
+            background-color: #c8a5e3;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .player-controls button:hover {
+            background-color: #8e44ad;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <img style="width: 60px;" src="imgs/logo.png" alt="Rhythmify Logo">
+            <div class="search-bar">
+                <input type="text" placeholder="O que você quer ouvir?">
+            </div>
+            <div style="margin-right: 30px;" class="user">
+                <a href="usuario.html"> 
+                    <i class="icon-user">
+                        <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#8e44ad">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
+                            <g id="SVGRepo_iconCarrier">
+                                <circle cx="12" cy="9" r="3" stroke="#8e44ad" stroke-width="1.5" />
+                                <circle cx="12" cy="12" r="10" stroke="#8e44ad" stroke-width="1.5" />
+                                <path d="M17.9691 20C17.81 17.1085 16.9247 15 11.9999 15C7.07521 15 6.18991 17.1085 6.03076 20" stroke="#8e44ad" stroke-width="1.5" stroke-linecap="round" />
+                            </g>
+                        </svg>
+                    </i>
+                </a>
+            </div>
+        </header>
+        
+
+        <div class="content">
+            <aside class="sidebar">
+                <div class="library-header">
+                    <h2>Sua biblioteca</h2>
+                    <div>
+                        <span class="add-button">+</span>
+                        <span class="arrow-button">→</span>
+                    </div>
+                </div>
+
+                <div class="tabs">
+                    <li><a href="player.html">Playlist</a></li>
+
+                </div>
+
+                <div class="library">
+                    <ul>
+                        <li onclick="playPlaylist('Br.Br')">
+                            <img src="imgs/0526a448-9d5e-4a19-b336-b46ff1693baf.jpg" alt="Br.Br">
+                            <span>Br.Br</span>
+                        </li>
+                        <li onclick="playPlaylist('Gym')">
+                            <img src="imgs/download.jpg" alt="Gym">
+                            <span>Gym</span>
+                        </li>
+                        <li onclick="playPlaylist('Musica.Atualizada')">
+                            <img src="imgs/Altinha br.jpg" alt="Musica.Atualizada">
+                            <span>Musica.Atualizada</span>
+                        </li>
+                        <li onclick="playPlaylist('Carnaval-2024')">
+                            <img src="imgs/“𝐦𝐢𝐚 𝐡𝐚𝐧𝐧𝐚𝐡 ♡“.jpg" alt="Carnaval-2024">
+                            <span>Carnaval-2025</span>
+                        </li>
+                        <li onclick="playPlaylist('Verão-Pop')">
+                            <img src="imgs/download (1).jpg" alt="Verão-Pop">
+                            <span>Verão-Pop</span>
+                        </li>
+
+                    </ul>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <div class="profile-section">
+                    <h2 class="section-title">Meu Perfil</h2>
+                    <div class="profile-header">
+                        <div class="profile-avatar" onclick="openModal()">
+                            <img src="imgs/account.png" alt="Imagem do perfil" class="avatar-image">
+                        </div>
+                        <h3 id="username">Nome de Usuário</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal" id="profileModal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <div class="modal-item">
+                    <label for="profilePic">Escolha uma nova imagem:</label>
+                    <input type="file" id="profilePic" accept="image/*" onchange="previewImage(event)">
+                </div>
+                <div class="modal-item">
+                    <label for="usernameInput">Nome de usuário:</label>
+                    <input type="string" id="usernameInput" value="Nome de Usuário" maxlength="100">
+                </div>
+                <button class="save-btn" onclick="saveProfile()">Salvar</button>
+            </div>
+        </div>
+    
+        <script>
+            function openModal() {
+                document.getElementById('profileModal').style.display = 'block';
+            }
+    
+            function closeModal() {
+                document.getElementById('profileModal').style.display = 'none';
+            }
+    
+            function previewImage(event) {
+                const image = document.querySelector('.avatar-image');
+                const file = event.target.files[0];
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    image.src = e.target.result;
+                    localStorage.setItem('profileImage', e.target.result); // Salvar a imagem no localStorage
+                };
+                if (file) {
+                    reader.readAsDataURL(file);
+                }
+            }
+    
+            function saveProfile() {
+                const username = document.getElementById('usernameInput').value;
+                document.getElementById('username').innerText = username;
+                localStorage.setItem('username', username); // Salvar o nome de usuário
+                closeModal();
+            }
+    
+            window.onload = function() {
+                const savedUsername = localStorage.getItem('username');
+                const savedProfileImage = localStorage.getItem('profileImage');
+    
+                if (savedUsername) {
+                    document.getElementById('username').innerText = savedUsername;
+                    document.getElementById('usernameInput').value = savedUsername; // Preencher o input
+                }
+    
+                if (savedProfileImage) {
+                    document.querySelector('.avatar-image').src = savedProfileImage; // Definir a imagem de perfil
+                }
+            };
+    
+            window.onclick = function(event) {
+                const modal = document.getElementById('profileModal');
+                if (event.target == modal) {
+                    closeModal();
+                }
+            }
+        </script>
+    
+            </div>
+            </main>
+        </div>
+
+        <footer>
+            <div class="playingmusic">
+                <img style="border-radius: 8px; width: 50px;" src="imgs/song_ret.jfif" alt="">
+                <span id="current-song">7 meiota</span>
+            </div>
+
+            <div class="progress-bar">
+                <input type="range" min="0" max="100" value="0" class="duration-bar" id="progress-bar">
+            </div>
+
+            <div class="player-controls">
+                <button id="prevButton">Prev</button>
+                <button id="playButton">Play</button>
+                <button id="nextButton">Next</button>
+            </div>
+        </footer>
+
+        <audio id="audio" src="musicas/Filipe Ret ✦ 7 Meiota (Ft. Maneirinho & Cabelinho – Prod. Ian Girão) [ ezmp3.cc ].mp3"></audio>
+
+        <script>
+            const audio = document.getElementById('audio');
+            const playButton = document.getElementById('playButton');
+            const progressBar = document.getElementById('progress-bar');
+
+            playButton.addEventListener('click', () => {
+                if (audio.paused) {
+                    audio.play();
+                    playButton.textContent = 'Pause';
+                } else {
+                    audio.pause();
+                    playButton.textContent = 'Play';
+                }
+            });
+
+            audio.addEventListener('timeupdate', () => {
+                const progress = (audio.currentTime / audio.duration) * 100;
+                progressBar.value = progress;
+            });
+
+            progressBar.addEventListener('input', () => {
+                const newTime = (progressBar.value / 100) * audio.duration;
+                audio.currentTime = newTime;
+            });
+        </script>
+    </div>
+</body>
+
+</html>
+
+ 
+
+

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="scripts/login.js">
+    <title>Rhythmify Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(90deg, #000000, #6A0FAD);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #3F006B;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            color: white;
+            width: 400px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0px;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 100px; 
+            height: 100px;
+        }
+
+        .logo h1 {
+            font-size: 2rem;
+            margin: 0;
+            color: #bc6ddb;
+        }    
+
+        .login-options {
+            margin: 20px 0;
+        }
+
+        .google-btn, .apple-btn {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .google-btn img, .apple-btn img {
+            width: 30px;
+            margin-top: -8px;
+            margin-right: 10px;
+            margin-bottom: -8px;
+        }
+        .google-btn {
+            background-color: #bc6ddb;
+            color: white;
+        }
+
+        .apple-btn {
+            background-color: #bc6ddb;
+            color: white;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .login-form input {
+            padding: 10px;
+            border-radius: 30px;
+            border: none;
+            font-size: 1rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .password-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 40px;
+            top: 45%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #bc6ddb;
+            font-size: 1.5rem;
+        }
+
+        button[type="submit"] {
+            background-color: #bc6ddb;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #a351c4;
+        }
+
+        .forgot-password, .signup {
+            margin-top: 20px;
+        }
+
+        .forgot-password a, .signup a {
+            color: #F3A9F1;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover, .signup a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <img src="imgs/logo.png" alt="Rhythmify Logo">
+            <h1>Rhythmify</h1>
+        </div>
+        <div class="login-options">
+            <button class="google-btn"><img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png" alt=""><a href="google.html">Entrar com o Google</a></button>
+            <button class="apple-btn"><img src="https://cdn.freebiesupply.com/images/large/2x/apple-logo-transparent.png" alt=""><a href="apple.html">Entrar com a Apple</a></button>
+        </div>
+        <form class="login-form" onsubmit="event.preventDefault(); togglePassword();">
+            <input type="text" placeholder="Insira seu usuário ou e-mail" required>
+            <div class="password-container">
+                <input type="password" id="password" placeholder="Insira sua senha" required>
+                <button type="button" class="toggle-password" onclick="togglePassword()">&#128065;</button>
+            </div>
+            <button type="submit">Entrar</button>
+        </form>
+        <div class="forgot-password">
+        </div>
+        <div class="signup">
+            <p>Não tem uma conta? <a href="signup.html">Inscrever-se no Rhythmify.</a></p>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword() {
+            var passwordInput = document.getElementById("password");
+            var eyeIcon = document.querySelector(".toggle-password");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.innerHTML = "&#128065;";
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.innerHTML = "&#128065;";
+            }
+        }
+    </script>
+</body>
+</html>

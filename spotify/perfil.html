@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <div class="form-header">
+                <img src="imgs/logo.png" alt="Logo" class="logo">
+                <p>Etapa 2 de 2</p>
+                <h2>Fale sobre você</h2>
+            </div>
+            <form>
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" placeholder="Este nome aparecerá no seu perfil">
+
+                <label for="data-nascimento">Data de nascimento</label>
+                <div class="date-input">
+                    <input type="text" id="dia" name="dia" placeholder="dd">
+                    <select id="mes" name="mes">
+                        <option>Mês</option>
+                        <option value="01">Janeiro</option>
+                        <option value="02">Fevereiro</option>
+                        <option value="03">Março</option>
+                        <option value="04">Abril</option>
+                        <option value="05">Maio</option>
+                        <option value="06">Junho</option>
+                        <option value="07">Julho</option>
+                        <option value="08">Agosto</option>
+                        <option value="09">Setembro</option>
+                        <option value="10">Outubro</option>
+                        <option value="11">Novembro</option>
+                        <option value="12">Dezembro</option>
+                    </select>
+                    <input type="text" id="ano" name="ano" placeholder="aaaa">
+                </div>
+
+                <label>Gênero</label>
+                <div class="radio-group">
+                    <input type="radio" id="homem" name="genero" value="homem">
+                    <label for="homem">Homem</label><br>
+                    <input type="radio" id="mulher" name="genero" value="mulher">
+                    <label for="mulher">Mulher</label><br>
+                    <input type="radio" id="nao-binario" name="genero" value="nao-binario">
+                    <label for="nao-binario">Não binário</label><br>
+                    <input type="radio" id="outro" name="genero" value="outro">
+                    <label for="outro">Outro</label><br>
+                    <input type="radio" id="prefiro-nao-dizer" name="genero" value="prefiro-nao-dizer">
+                    <label for="prefiro-nao-dizer">Prefiro não dizer</label>
+                </div>
+
+                <button type="submit" class="submit-button"><a href="concluido.html">Avançar</a></button>
+            </form>
+        </div>
+    </div>
+</body>
+<style>
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #000000, #6A0FAD);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.form-box {
+    background-color: #3d0055;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+}
+
+input[type="text"], select {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 30px; 
+    border: none;       
+    width: 100%;
+    font-size: 1em;
+    background-color: #61008a;
+    color: white;       
+    outline: none;      
+    text-align: center;   
+}
+
+input[type="text"]::placeholder {
+    color: #d1b3e0; 
+}
+
+input[type="text"]:focus {
+    background-color: #7a009e; 
+    box-shadow: 0 0 5px 1px #9e00d7;
+}
+
+select {
+    background-color: #61008a; 
+    color: white;
+    border-radius: 30px;
+    text-align: center;
+}
+
+select:focus {
+    background-color: #7a009e;
+    box-shadow: 0 0 5px 1px #9e00d7;
+}
+
+.date-input {
+    display: flex;
+    justify-content: space-between;
+}
+
+.date-input input,
+.date-input select {
+    width: 30%;
+}
+
+.radio-group {
+    margin-bottom: 20px;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+.submit-button {
+    background-color: #b057d3;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 30px; 
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #61008a;
+}
+
+</style>
+</html>
